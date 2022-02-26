@@ -1,3 +1,4 @@
+
 @import 'libs/font';
 
 @import 'base/variables';
@@ -5,12 +6,16 @@
 @import 'base/animations';
 
 * {
+    box-sizing: border-box;
     font-family: 'Gilroy', sans-serif;
     font-weight: 400;
+    margin: 0;
+    padding: 0;
 }
 .container {
-    max-width: 950px;
+    max-width: 1330px;
     margin: 0 auto;
+    padding: 0 15px;
 }
 
 @import 'blocks/header';

@@ -1,26 +1,99 @@
 @media (max-width: 1200px) {
-    .container {
-        max-width: 900px;
-    }
+    
 }
 
 
 @media (max-width: 991px) {
-    .container {
-        max-width: 700px;
+    .header {
+        &__info {
+            form {
+                width: 100%;
+            }
+            .contacts {
+                display: none;
+            }
+        } 
     }
 }
 
 
 @media (max-width: 767px) {
-    .container {
-        max-width: 520px;
+    .header {
+        padding: 12px 0;
+        height: 142px;
+        .container {
+            flex-wrap: wrap;
+        }
+        .menu {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 62px;
+            height: 56px;
+            border: none;
+            background-color: inherit;
+            order: 1;
+            &__burger {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                width: 25px;
+                height: 17px;
+                &-elem {
+                    width: inherit;
+                    height: 3px;
+                    border-radius: 50px;
+                    background-color: $green-color;
+                }
+            }
+            &__text {
+                margin-top: 6px;
+                font-weight: 700;
+                font-size: 12px;
+                line-height: 15px;
+                color: #fff;
+            }
+        }
+        &__logo {
+            order: 2;
+        }
+        &__basket {
+            flex-direction: column;
+            width: 62px;
+            height: 56px;
+            order: 3;
+            &-text {
+                width: 62px;
+                font-size: 12px;
+                line-height: 14px;
+                order: 3;
+                text-transform: lowercase;
+            }
+            &-line {
+                width: 48px;
+                height: 1px;
+                margin: 0;
+                order: 2;
+            }
+            &-icon {
+                height: 24px;
+                display: block;
+                order: 1;
+            }
+            &-counter {
+                display: none;
+            }
+        }
+        &__info {
+            margin-top: 10px;
+            width: 100%;
+            order: 4;
+        }
     }
 }
 
 
 @media (max-width: 575px) {
-    .container {
-        max-width: 300px;
-    }
+    
 }
