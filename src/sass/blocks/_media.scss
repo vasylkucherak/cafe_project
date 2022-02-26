@@ -17,7 +17,7 @@
 }
 
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     .header {
         padding: 12px 0;
         height: 142px;
@@ -89,6 +89,15 @@
             margin-top: 10px;
             width: 100%;
             order: 4;
+        }
+    }
+    .promo {
+        .promo__desktop {
+            display: none;
+        }
+        .promo__mobile {
+            display: block;
+            width: 100vw;
         }
     }
 }
