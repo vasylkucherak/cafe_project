@@ -136,6 +136,15 @@
         .divider {
             top: 55px;
         }
+        &__cards {
+            padding: 0 2px;
+            height: 447px;
+            .card {
+                margin: 40px 8px 0 8px;
+                min-width: 300px;
+                height: 367px;
+            }
+        }
     }
 }
 
