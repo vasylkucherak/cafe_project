@@ -1,6 +1,7 @@
 .promo {
+    background-color: $bg-color;
     .promo__desktop {
-        width: 100vw;
+        width: 100%;
     }
     .promo__mobile {
         display: none;

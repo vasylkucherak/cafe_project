@@ -97,7 +97,44 @@
         }
         .promo__mobile {
             display: block;
-            width: 100vw;
+            width: 100%;
+        }
+    }
+    .menu {
+        &__panel {
+            height: 57px;
+        }
+        &__item {
+            padding: 0 15px;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 57px;
+            &.all {
+                min-width: 102px;
+                margin-left:10px;
+            }
+            &.cold {
+                min-width: 150px;
+            }
+            &.warm {
+                min-width: 138px;
+            }
+            &.meat, &.fish {
+                min-width: 128px;
+            }
+            &.soup {
+                min-width: 64px;
+            }
+            &.grill {
+                min-width: 107px;
+            }
+            &.drink {
+                min-width: 85px;
+                margin-right: 10px;
+            }
+        }
+        .divider {
+            top: 55px;
         }
     }
 }
