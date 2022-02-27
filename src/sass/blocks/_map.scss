@@ -1,0 +1,48 @@
+.map {
+    .cafe {
+        position: relative;
+        top: 0;
+        left: 28px;
+        width: calc(100% - 56px);
+        &__img, &__block {
+            margin: 0 auto;
+            position: absolute;
+            border-radius: 10px;
+            width: 100%;
+            z-index: 1;
+        }
+        &__block {
+            width: calc(100% + 56px);
+            transform: translateX(-28px);
+            border-radius: 0;
+            background-color: $bg-color;
+            .map__img {
+                width: 100%;
+                transform: translate(0px, 70%);
+            }
+            .contacts {
+                width: 526px;
+                height: 405px;
+                background-color: #2E2B2C;
+                transform: translateX(110px);
+                border-radius: 15px;
+            }
+        }
+        &__text {
+            position: absolute;
+            top: 100px;
+            left: 70px;
+            width: 560px;
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 25px;
+            color: #fff;
+            z-index: 2;
+            span {
+                font-weight: bold;
+                font-size: 32px;
+                line-height: 39px;
+            }
+        }
+    }
+}
