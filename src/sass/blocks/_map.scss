@@ -1,4 +1,41 @@
 .map {
+    position: relative;
+    background-color: $bg-color;
+    .container {
+        position: relative;
+    }
+    .cafe {
+        &__img {
+            position: relative;
+            margin: 0 auto;
+            width: calc(100% - 56px);
+            border-radius: 10px;
+            z-index: 2;
+            transform: translate(28px, 30%);
+        }
+        &__text {
+            position: absolute;
+            top: 20%;
+            left: 70px;
+            width: 560px;
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 25px;
+            color: #fff;
+            z-index: 2;
+            span {
+                font-weight: bold;
+                font-size: 32px;
+                line-height: 39px;
+            }
+        }
+    }
+    &__img {
+        width: 100%;
+    }
+}
+
+/* .map {
     .cafe {
         position: relative;
         top: 0;
@@ -17,10 +54,14 @@
             border-radius: 0;
             background-color: $bg-color;
             .map__img {
+                position: relative;
                 width: 100%;
                 transform: translate(0px, 70%);
             }
             .contacts {
+                position: absolute;
+                //top
+                ///left
                 width: 526px;
                 height: 405px;
                 background-color: #2E2B2C;
@@ -45,4 +86,4 @@
             }
         }
     }
-}
+} */
