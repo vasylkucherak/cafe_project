@@ -1,5 +1,31 @@
 @media (max-width: 1200px) {
-    
+    .map {
+        &-card {
+            &__title {
+                font-size: 26px;
+            }
+            &__contacts {
+                .addres, .mail {
+                    .text {
+                        .descr {
+                            font-size: 14px;
+                        }
+                    }
+                }
+            }
+            &__phone {
+                .btn {
+                    width: 150px;
+                    height: 45px;
+                    font-size: 12px;
+                    margin-right: 5%;
+                }
+            }
+            .link {
+                font-size: 14px;
+            }
+        }
+    }
 }
 
 
@@ -24,6 +50,37 @@
                     font-size: 28px;
                     line-height: 35px;
                 }
+            }
+        }
+        &-card {
+            &__title {
+                font-size: 18px;
+            }
+            &__contacts {
+                .addres, .mail {
+                    .text {
+                        .descr {
+                            font-size: 12px;
+                        }
+                    }
+                }
+            }
+            &__phone {
+                .btn {
+                    width: 100px;
+                    height: 35px;
+                    font-size: 11px;
+                    margin-right: 5%;
+                    text-align: center;
+                }
+            }
+            &__socials {
+                .title {
+                    font-size: 12px;
+                }
+            }
+            .link {
+                font-size: 12px;
             }
         }
     }
@@ -151,7 +208,7 @@
         }
         &__cards {
             padding: 0 2px;
-            height: 407px;
+            height: 447px;
             .card {
                 margin: 40px 8px 0 8px;
                 min-width: 300px;
@@ -168,10 +225,61 @@
                 display: none;
             }
         }
+        &-card {
+            bottom: 20px;
+            left: -10%;
+            width: 45%;
+            height: 85%;
+        }
     }
 }
 
 
 @media (max-width: 575px) {
-    
+    .map {
+        &__img {
+            height: 250px;
+            object-fit: cover;
+        }
+        &-card {
+            bottom: 5px;
+            left: -100px;
+            width: 55%;
+            height: 94%;
+            &__title {
+                font-size: 12px;
+            }
+            &__contacts {
+                .addres, .mail {
+                    .text {
+                        .title {
+                            font-size: 10px;
+                        }
+                        .descr {
+                            font-size: 10px;
+                        }
+                    }
+                }
+            }
+            &__phone {
+                flex-wrap: wrap;
+                .btn {
+                    width: 90px;
+                    height: 30px;
+                    font-size: 10px;
+                    margin-right: 5%;
+                    text-align: center;
+                }
+            }
+            &__socials {
+                flex-wrap: wrap;
+                .title {
+                    font-size: 10px;
+                }
+            }
+            .link {
+                font-size: 10px;
+            }
+        }
+    }
 }
