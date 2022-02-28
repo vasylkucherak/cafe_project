@@ -84,6 +84,16 @@
             }
         }
     }
+    footer {
+        .wrapper {
+            justify-content: space-between;
+            .right-block {
+                flex-direction: column;
+                align-items: end;
+                width: 200px;
+            }
+        }
+    }
 }
 
 
@@ -230,6 +240,27 @@
             left: -10%;
             width: 45%;
             height: 85%;
+        }
+    }
+    footer {
+        height: 230px;
+        .wrapper {
+            justify-content: center;
+            .left-block {
+                align-items: center;
+                .header__logo {
+                    order: 0;
+                }
+                span {
+                    text-align: center;
+                }
+                a.link {
+                    padding: 10px 0;
+                }
+            }
+            .right-block {
+                display: none;
+            }
         }
     }
 }
