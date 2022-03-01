@@ -190,26 +190,26 @@
             font-size: 14px;
             line-height: 57px;
             &.all {
-                min-width: 102px;
+                min-width: 103px;
                 margin-left:10px;
             }
             &.cold {
-                min-width: 150px;
+                min-width: 152px;
             }
             &.warm {
-                min-width: 138px;
+                min-width: 140px;
             }
             &.meat, &.fish {
-                min-width: 128px;
+                min-width: 130px;
             }
             &.soup {
-                min-width: 64px;
+                min-width: 65px;
             }
             &.grill {
-                min-width: 107px;
+                min-width: 108px;
             }
             &.drink {
-                min-width: 85px;
+                min-width: 86px;
                 margin-right: 10px;
             }
         }

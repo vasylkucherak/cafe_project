@@ -1,30 +1,74 @@
 window.addEventListener('DOMContentLoaded', () => {
     'use strict';
+    // об'єкт з кількістю товарів у корзині
     let cart = {
         'lamb': {'count': 0, 'price': 620},
         'turkey': {'count': 0, 'price': 450},
         'goose': {'count': 0, 'price': 7900},
         'duck': {'count': 0, 'price': 3230}
     };
-
-    const menuPanel = document.querySelector('.menu__panel'),
-          menuItems = menuPanel.querySelectorAll('.menu__item'),
-          cardsWrapper = document.querySelector('.menu__cards'),
-          cards = cardsWrapper.querySelectorAll('.card'),
-          adds = cardsWrapper.querySelectorAll('.add');
+    // витягування елементів html
+    const headerCounter = document.querySelector('.header__basket-counter'),  // лічильник товарів корзини
+          menuPanel = document.querySelector('.menu__panel'),   // область табів
+          menuItems = menuPanel.querySelectorAll('.menu__item'),  // таби
+          cardsWrapper = document.querySelector('.menu__cards'),  // область карток
+          cards = cardsWrapper.querySelectorAll('.card');  // кожна картка
     
-    // click on tabs
-    menuPanel.addEventListener('click', (e) => {
-        if (e.target.classList.contains('menu__item')) {
-            menuItems.forEach(menuItem => menuItem.classList.remove('active'));
-            e.target.classList.add('active');
+    headerCounter.innerHTML = 0;
+    // клік на таби
+    menuPanel.addEventListener('click', (e) => {   // при кліку на область табів
+        if (e.target.classList.contains('menu__item')) {  // якщо ми клікнули на таб (елемент з класом .menu__item)
+            menuItems.forEach(menuItem => menuItem.classList.remove('active'));  // перебираємо таби і в кожному видаляємо клас active
+            e.target.classList.add('active');  // даємо клас active лиш на той таб на котрий натиснули
         }
     });
-
-    // click in add on cart 
-    adds.forEach((add, i) => {
-        add.addEventListener('click', () => {
-            cards[i].classList.add('active');
+    // взаємодія з картками
+    cards.forEach(card => {
+        // витягування елементів кожної картки
+        const id = card.dataset.id,
+                  counter = card.querySelector('.card__counter'),
+                  price = card.querySelector('.price'),
+                  add = card.querySelector('.add'),
+                  minus = card.querySelector('.minus'),
+                  plus = card.querySelector('.plus');
+        // функція оновлення ціни на картці
+        const setPrice = () => {
+            price.innerHTML = `${cart[id]['price']} &#8381`;
+        }
+        // встановлюємо початкову ціну
+        setPrice();
+        // навішуємо всі кліки на картку
+        card.addEventListener('click', (e) => {
+            // клік на кнопку додати до корзини
+            if (e.target == add || e.target.classList.contains('add__icon')) { // якщо ми натиснули на кнопку додати до корзини
+                counter.innerHTML = 1; // у лічильнику встановлюємо значення 1
+                cart[id]['count'] = 1;  // у масив корзину записуємо кількість 1
+                card.classList.add('active');  // картку робимо активною
+                headerCounter.innerHTML++;
+            }
+            // клік на кнопку "+"
+            if (e.target == plus || e.target.classList.contains('plus__icon')) { // якщо ми натиснули на кнопку '+'
+                counter.innerHTML++;  // значення лічильника збільшуємо на 1
+                cart[id]['count']++;  // значення у масиві корзині збільшуємо на 1
+                let sumPrice = cart[id]['price'] * cart[id]['count'];
+                price.innerHTML = `${sumPrice} &#8381`;
+                headerCounter.innerHTML++;
+            }
+            // клік на кнопку "-"
+            if (e.target == minus || e.target.classList.contains('minus__icon')) { // якщо ми натиснули на кнопку '+'
+                if (counter.innerHTML == 1) {  // якщо до кліку на "-" у лічильнику було 1
+                    card.classList.remove('active');  // картку робимо  не активною
+                    cart[id]['count'] = 0;  // значення у масиві корзині 0
+                    setPrice();
+                    headerCounter.innerHTML--;
+                    return;
+                }
+                counter.innerHTML--;  // значення лічильника зменшуємо на 1
+                cart[id]['count']--;  // значення у масиві корзині зменшуємо на 1
+                let sumPrice = cart[id]['price'] * cart[id]['count'];
+                price.innerHTML = `${sumPrice} &#8381`;
+                headerCounter.innerHTML--;
+            }
         });
     });
 });

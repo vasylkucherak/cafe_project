@@ -169,7 +169,7 @@
                 .add, .price {
                     display: flex;
                     width: 138px;
-                    svg {
+                    &__icon {
                         margin-left: 12px;
                     }
                 }
