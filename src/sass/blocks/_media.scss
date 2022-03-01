@@ -268,7 +268,8 @@
         &__content {
             margin: 0;
             padding: 15px 20px;
-            max-height: 100%;
+            max-height: none;
+            height: 100%;
             border-radius: 0;
             .order {
                 &__item {
@@ -277,7 +278,7 @@
                         min-width: 260px;
                         height: 70px;
                         .text {
-                            width: 320px;
+                            width: 280px;
                             .title {
                                 font-size: 16px;
                                 line-height: 19px;
@@ -356,5 +357,101 @@
             }
         }
     }
+    .modal {
+        &__content {
+            .order {
+                &__item {
+                    .dish {
+                        flex-direction: column;
+                        .text {
+                            .title {
+                                text-align: center;
+                            }
+                            .descr {
+                                display: none;
+                            }
+                        }
+                        .calc {
+                            flex-direction: row;
+                            justify-content: center;
+                        }
+                    }
+                }
+            }
+            .issue {
+                padding: 20px 40px;
+                flex-direction: column;
+                width: 320px;
+                height: 160px;
+                &__info {
+                    .sum, .min {
+                        width: 320px;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
     
+}
+
+
+@media (max-width: 480px) {
+    .modal {
+        &__content {
+            padding: 15px 10px;
+            .order {
+                &__item {
+                    padding: 0 10px;
+                    img {
+                        width: 100px;
+                        height: 75px;
+                    }
+                    .dish {
+                        margin-left: 10px;
+                        min-width: 170px;
+                        .text {
+                            width: 170px;
+                            .title {
+                                margin: 0 auto;
+                                width: 170px;
+                                text-align: center;
+                            }
+                        }
+                        .calc {
+                            justify-content: space-between;
+                            width: 170px;
+                            .counter, .res {
+                                .minus, .plus, .delete {
+                                    width: 20px;
+                                    height: 20px;
+                                    font-size: 20px;
+                                }
+                                .count, .price {
+                                    margin: 0 2px;
+                                    font-size: 16px;
+                                    line-height: 20px;
+                                }
+                                .count {
+                                    width: 20px;
+                                }
+                                .price {
+                                    width: 70px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .issue {
+                margin-bottom: 10px;
+                width: 280px;
+                &__info {
+                    .sum, .min {
+                        width: 280px;
+                    }
+                }
+            }
+        }
+    }
 }
