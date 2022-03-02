@@ -172,7 +172,7 @@ window.addEventListener('DOMContentLoaded', () => {
                     }
                     const cartCard = document.createElement('div');
                     cartCard.innerHTML = ` 
-                        <div class="order__item data-id="${key}">
+                        <div class="order__item" data-id="${key}">
                             <img src="./img/cards/${key}.png" alt="${key}">
                             <div class="dish">
                                 <div class="text">
@@ -200,40 +200,53 @@ window.addEventListener('DOMContentLoaded', () => {
                 }   
             } 
         }
+        onCart();
     }
-    renderCart();
 
     //===================================== КНОПКИ КОРЗИНИ ================================================= 
-    const orderCards = document.querySelectorAll('.order__item');  // кожна сформована картка корзини
+    const onCart = () => {
+        let orderCards = document.querySelectorAll('.order__item');  // кожна сформована картка корзини
+        orderCards.forEach(orderCard => {
+            const id = orderCard.dataset.id,
+                minus = orderCard.querySelector('.minus'),
+                count = orderCard.querySelector('.count'),
+                plus = orderCard.querySelector('.plus'),
+                price = orderCard.querySelector('.price'),
+                del = orderCard.querySelector('.del');
 
-    orderCards.forEach(card => {
-        const id = card.dataset.id,
-              minus = card.querySelector('.minus'),
-              count = card.querySelector('.count'),
-              plus = card.querySelector('.plus'),
-              price = card.querySelector('.price'),
-              del = card.querySelector('.del');
-        
-        
-
-        card.addEventListener('click', (e) => {
-            // клік на кнопку відняти
-            if (e.target == minus || e.target.classList.contains('minus__icon')) { // якщо ми натиснули на кнопку '+'
-                count.innerHTML--;  // значення лічильника зменшуємо на 1
-                cart[id]['count']--;  // значення у масиві корзині зменшуємо на 1
-                let sumPrice = cart[id]['price'] * cart[id]['count'];
-                price.innerHTML = `${sumPrice} &#8381`;
-                headerCounter.innerHTML--;
-                renderCart();
-            }
-            // клік на кнопку видалити
-            if (e.target == del || e.target.classList.contains('del__icon')) { // якщо ми натиснули на кнопку видалити
-                card.classList.remove('active');  // картку робимо не активною
-                headerCounter.innerHTML--;  // мінусуємо значення лічильника
-                cart[id]['count'] = 0;  // у масив корзину записуємо кількість 0
-            }
+            orderCard.addEventListener('click', (e) => {
+                // клік на кнопку '-'
+                if (e.target == minus || e.target.classList.contains('minus__icon')) { // якщо ми натиснули на кнопку '+'
+                    if (count.innerHTML == 2) {
+                        cart[id]['count']--;
+                        renderCart();
+                        return;
+                    }
+                    count.innerHTML--;  // значення лічильника зменшуємо на 1
+                    cart[id]['count']--;  // значення у масиві корзини зменшуємо на 1
+                    price.innerHTML = `${cart[id]['price'] * cart[id]['count']} &#8381`;
+                }
+                // клік на кнопку '+'
+                if (e.target == plus || e.target.classList.contains('plus__icon')) { // якщо ми натиснули на кнопку '+'
+                    if (count.innerHTML == 1) {
+                        cart[id]['count']++;
+                        renderCart();
+                        return;
+                    }
+                    count.innerHTML++;  // значення лічильника збільшуємо на 1
+                    cart[id]['count']++;  // значення у масиві корзини збільшуємо на 1
+                    price.innerHTML = `${cart[id]['price'] * cart[id]['count']} &#8381`;
+                }
+                // клік на кнопку видалити
+                if (e.target == del || e.target.classList.contains('del__icon')) { // якщо ми натиснули на кнопку видалити
+                    orderCard.classList.remove('active');  // картку робимо не активною
+                    headerCounter.innerHTML--;  // мінусуємо значення лічильника
+                    cart[id]['count'] = 0;  // у масив корзину записуємо кількість 0
+                }
+            });
         });
-    })
+    }
+    
 });
 /*     //============================ МЕНЮ =============================================================
    
