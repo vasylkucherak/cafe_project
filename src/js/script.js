@@ -77,7 +77,16 @@ window.addEventListener('DOMContentLoaded', () => {
                 cart[id]['count'] = 0;  // у масив корзину записуємо кількість 0
             }
         });
-    })
+    });
+
+    const clearActive = (key) => {
+        const cards = document.querySelectorAll('.card');  // кожна сформована картка меню
+        cards.forEach(card => {
+            if (card.dataset.id == key) {
+                card.classList.remove('active');
+            }
+        });
+    }
 
     //==================== ВІДКРИТТЯ МОДАЛЬНОГО ВІКНА ===================================================
     function bindModal(triggerSelector, modalSelector, closeSelector, destroy = false) {
@@ -239,9 +248,10 @@ window.addEventListener('DOMContentLoaded', () => {
                 }
                 // клік на кнопку видалити
                 if (e.target == del || e.target.classList.contains('del__icon')) { // якщо ми натиснули на кнопку видалити
-                    orderCard.classList.remove('active');  // картку робимо не активною
                     headerCounter.innerHTML--;  // мінусуємо значення лічильника
                     cart[id]['count'] = 0;  // у масив корзину записуємо кількість 0
+                    renderCart();
+                    clearActive(id);
                 }
             });
         });
