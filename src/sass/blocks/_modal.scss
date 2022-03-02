@@ -95,7 +95,7 @@
                         .counter, .res {
                             display: flex;
                             align-items: center;
-                            .minus, .plus, .delete {
+                            .minus, .plus, .del, .minus-gray {
                                 display: flex;
                                 justify-content: center;
                                 align-items: center;
@@ -125,6 +125,10 @@
                             }
                             .price {
                                 width: 100px;
+                            }
+                            .minus-gray {
+                                background-color: $gray-color;
+                                cursor: default;
                             }
                         }
                     }

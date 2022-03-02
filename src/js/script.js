@@ -154,6 +154,7 @@ window.addEventListener('DOMContentLoaded', () => {
         const headerCounter = document.querySelector('.header__basket-counter'),
               order = document.querySelector('.order'),
               empty = order.querySelector('.order__empty');
+        let toggleMinus;
 
         while (order.children.length != 1) {   // поки не лишиться 1 елемент (це order__empty)
             order.removeChild(order.lastChild);  // видаляємо всі картки
@@ -164,32 +165,36 @@ window.addEventListener('DOMContentLoaded', () => {
             empty.style.display = 'none';            
             for (let key in cart) {
                 if (cart[key]['count'] != 0) {
+                    if (cart[key]['count'] == 1) {  // якщо до кліку на "-" у лічильнику 1
+                        toggleMinus = '<div class="minus-gray"><img src="./icons/minus.svg" alt="minus"></div>';
+                    } else {
+                        toggleMinus = '<div class="minus"><img class="minus__icon" src="./icons/minus.svg" alt="minus"></div>';
+                    }
                     const cartCard = document.createElement('div');
-                    cartCard.classList.add('order__item');
                     cartCard.innerHTML = ` 
-                        <img src="./img/cards/${key}.png" alt="${key}">
-                        <div class="dish">
-                            <div class="text">
-                                <h2 class="title">${cart[key]['title']}</h2>
-                                <div class="descr">${cart[key]['descr']}</div>
-                            </div>
-                            <div class="calc">
-                                <div class="counter">
-                                    <div class="minus">
-                                        <img class="minus__icon" src="./icons/minus.svg" alt="minus">
+                        <div class="order__item data-id="${key}">
+                            <img src="./img/cards/${key}.png" alt="${key}">
+                            <div class="dish">
+                                <div class="text">
+                                    <h2 class="title">${cart[key]['title']}</h2>
+                                    <div class="descr">${cart[key]['descr']}</div>
+                                </div>
+                                <div class="calc">
+                                    <div class="counter">
+                                        ${toggleMinus}
+                                        <div class="count">${cart[key]['count']}</div>
+                                        <div class="plus">
+                                            <img class="plus__icon" src="./icons/plus.svg" alt="plus">
+                                        </div>
                                     </div>
-                                    <div class="count">${cart[key]['count']}</div>
-                                    <div class="plus">
-                                        <img class="plus__icon" src="./icons/plus.svg" alt="plus">
+                                    <div class="res">
+                                        <div class="price">${cart[key]['price'] * cart[key]['count']} &#8381</div>
+                                        <div class="del">&times;</div>
                                     </div>
                                 </div>
-                                <div class="res">
-                                    <div class="price">${cart[key]['price'] * cart[key]['count']} &#8381</div>
-                                    <div class="delete">&times;</div>
-                                </div>
                             </div>
+                            <div class="divider"></div>
                         </div>
-                        <div class="divider"></div>
                     `
                     order.append(cartCard);
                 }   
@@ -197,8 +202,39 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     }
     renderCart();
-});
 
+    //===================================== КНОПКИ КОРЗИНИ ================================================= 
+    const orderCards = document.querySelectorAll('.order__item');  // кожна сформована картка корзини
+
+    orderCards.forEach(card => {
+        const id = card.dataset.id,
+              minus = card.querySelector('.minus'),
+              count = card.querySelector('.count'),
+              plus = card.querySelector('.plus'),
+              price = card.querySelector('.price'),
+              del = card.querySelector('.del');
+        
+        
+
+        card.addEventListener('click', (e) => {
+            // клік на кнопку відняти
+            if (e.target == minus || e.target.classList.contains('minus__icon')) { // якщо ми натиснули на кнопку '+'
+                count.innerHTML--;  // значення лічильника зменшуємо на 1
+                cart[id]['count']--;  // значення у масиві корзині зменшуємо на 1
+                let sumPrice = cart[id]['price'] * cart[id]['count'];
+                price.innerHTML = `${sumPrice} &#8381`;
+                headerCounter.innerHTML--;
+                renderCart();
+            }
+            // клік на кнопку видалити
+            if (e.target == del || e.target.classList.contains('del__icon')) { // якщо ми натиснули на кнопку видалити
+                card.classList.remove('active');  // картку робимо не активною
+                headerCounter.innerHTML--;  // мінусуємо значення лічильника
+                cart[id]['count'] = 0;  // у масив корзину записуємо кількість 0
+            }
+        });
+    })
+});
 /*     //============================ МЕНЮ =============================================================
    
 
