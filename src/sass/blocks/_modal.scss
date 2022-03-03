@@ -165,6 +165,9 @@
                         font-weight: 700;
                         font-size: 20px;
                         color: #fff;
+                        &.danger {
+                            color: #802525;
+                        }
                     }
                 }
                 .min {
@@ -189,6 +192,10 @@
                 color: #fff;
                 background: linear-gradient(114.93deg, #618967 5.11%, #72A479 94%);
                 cursor: pointer;
+                &.blocked {
+                    background: $gray-color;
+                    cursor: default;
+                }
             }
         }
     }

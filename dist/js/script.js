@@ -262,15 +262,24 @@ window.addEventListener('DOMContentLoaded', () => {
     }
     // функція для перерахунку загальної суми
     const sumPrice = (selectors) => {
-        const finishPrice = document.querySelector('.sum__price');
-        let startPrice = 0;
-
+        const finishPrice = document.querySelector('.sum__price'),  // лічильник загальної суми
+              button = document.querySelector('#firstSubmit'),  // кнопка "оформить заказ"
+              prewPrice = +(finishPrice.innerHTML.slice(0,-2));  // загальна сума до оновлення (без знака рубля)
+        let nextPrice = 0;  // загальна сума після оновлення  // змінна оновленої суми
+        
         selectors.forEach((selector) => {
             const price = selector.querySelector('.price');
-            startPrice += +(price.innerHTML.slice(0,-2));
+            nextPrice += +(price.innerHTML.slice(0,-2));
         });
+        finishPrice.innerHTML = `${nextPrice} &#8381`;
 
-        finishPrice.innerHTML = `${startPrice} &#8381`;
+        if (nextPrice >= 1500) {
+            button.classList.remove('blocked');
+            finishPrice.classList.remove('danger');
+        } else {
+            button.classList.add('blocked');
+            finishPrice.classList.add('danger');
+        }
     }
 
 
