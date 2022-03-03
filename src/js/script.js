@@ -89,23 +89,21 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     //==================== ВІДКРИТТЯ МОДАЛЬНОГО ВІКНА ===================================================
-    function bindModal(triggerSelector, modalSelector, closeSelector, destroy = false) {
+    function bindModal(triggerSelector, modalSelector, closeSelector, submitSelector, closeOnModalClick = false) {
 
         const trigger = document.querySelectorAll(triggerSelector),
             modal = document.querySelector(modalSelector),
-            close = document.querySelector(closeSelector);
+            close = document.querySelector(closeSelector),
+            submit = document.querySelector(submitSelector);
 
         trigger.forEach(item => {
             item.addEventListener('click', (e) => {
                 if (e.target) {
                     e.preventDefault();
                 }
-
-                if (destroy) {
-                    item.remove();
+                if (!item.classList.contains('blocked')) {
+                    openModal(modalSelector);
                 }
-
-                openModal(modalSelector);
             });
         });
 
@@ -113,11 +111,20 @@ window.addEventListener('DOMContentLoaded', () => {
             closeModal(modalSelector);
         });
 
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
+        
+        submit.addEventListener('click', () => {
+            if (!submit.classList.contains('blocked')) {
                 closeModal(modalSelector);
             }
         });
+
+        if (closeOnModalClick) {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal(modalSelector);
+                }
+            });
+        }
 
         document.addEventListener('keydown', (e) => {
             if (e.code === "Escape" && modal.style.display == "block") { 
@@ -154,8 +161,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
         return scrollWidth;
     }
-
-    bindModal('[data-modal]', '.modal', '[data-close]');
+    bindModal('[data-modal]', '.modal', '[data-close]', '#firstSubmit', true);
+    bindModal('[data-secondModal]', '.secondModal', '[data-secondClose]', '#secondSubmit');
 
     //============================ РЕНДЕР КОРЗИНИ =============================================================
     const renderCart = () => {
@@ -263,17 +270,16 @@ window.addEventListener('DOMContentLoaded', () => {
     // функція для перерахунку загальної суми
     const sumPrice = (selectors) => {
         const finishPrice = document.querySelector('.sum__price'),  // лічильник загальної суми
-              button = document.querySelector('#firstSubmit'),  // кнопка "оформить заказ"
-              prewPrice = +(finishPrice.innerHTML.slice(0,-2));  // загальна сума до оновлення (без знака рубля)
-        let nextPrice = 0;  // загальна сума після оновлення  // змінна оновленої суми
+              button = document.querySelector('#firstSubmit');  // кнопка "оформить заказ"
+        let newPrice = 0;  // загальна сума після оновлення  // змінна оновленої суми
         
         selectors.forEach((selector) => {
             const price = selector.querySelector('.price');
-            nextPrice += +(price.innerHTML.slice(0,-2));
+            newPrice += +(price.innerHTML.slice(0,-2));
         });
-        finishPrice.innerHTML = `${nextPrice} &#8381`;
+        finishPrice.innerHTML = `${newPrice} &#8381`;
 
-        if (nextPrice >= 1500) {
+        if (newPrice >= 1500) {
             button.classList.remove('blocked');
             finishPrice.classList.remove('danger');
         } else {
@@ -281,6 +287,4 @@ window.addEventListener('DOMContentLoaded', () => {
             finishPrice.classList.add('danger');
         }
     }
-
-
 });

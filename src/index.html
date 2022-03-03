@@ -115,7 +115,7 @@
             </div>
         </div>
     </section>
-    <section class="map">
+    <section id="cafe" class="map">
         <img class="cafe__img" src="./img/cafe_bg.jpg" alt="our-cafe">
         <div class="cafe__text"><span>НАШЕ КАФЕ</span><br><br>
             Мы расположены в одном из самых живописных мест города — на берегу реки, это ваш оазис в черте города, куда можно сбежать от шумного и пыльного мегаполиса. Мы, действительно уникальные, ведь все продумано до мелочей: проект построен из дикого закарпатского сруба, камин в основном зале ресторана и панорамные окна с видом на реку, уютные беседки на берегу реки и лучшая видовая террасса, шатер с посадкой на 200 человек, сказочный детский домик и бассейн.
@@ -210,10 +210,10 @@
                 <a class="link" href="#">Политика конфиденциальности</a>
             </div>
             <div class="right-block">
-                <a class="link" href="#">О ресторане</a>
+                <a class="link" href="#cafe">О ресторане</a>
                 <a class="link" href="#">Условия доставки</a>
-                <a class="link" href="#">Возврат товара</a>
                 <a class="link" href="#">Акции</a>
+                <a data-modal class="link" href="#">Корзина</и>
             </div>
         </div>
     </footer>
@@ -235,10 +235,52 @@
                     <div class="sum">Итого: <span class="sum__price danger">0 ₽</span></div>
                     <div class="min">Минимальная сума заказа <span>1500 ₽</span></div>
                 </div>
-                <button id="firstSubmit" class="issue__btn blocked">Оформить заказ</button>
+                <button data-secondModal id="firstSubmit" class="issue__btn blocked">Оформить заказ</button>
             </div>
-            <!-- <form action="#">
-                <div class="modal__close" data-close>&times;</div>
+        </div>
+    </div>
+
+    <div class="secondModal">
+        <div class="modal__content">
+            <div class="modal__secondClose" data-secondClose>&times;</div>
+            <h2 class="modal__title">Оформление заказа</h2>
+                <div class="step">
+                    <h3 class="subtitle">1. Контактная информация</h3>
+                    <form class="step-1">
+                        <input required placeholder="Имя*" name="name" type="text">
+                        <input required placeholder="Телефон*" name="phone" type="phone">
+                    </form>
+                </div>
+                <div class="step">
+                    <h2 class="subtitle">2. Доставка</h2>
+                    <div class="radio">
+                        <div class="radio__btn active">Доставка</div>
+                        <div class="radio__btn">Самовывоз</div>
+                    </div>
+                    <p class="step__title">Адрес доставки</p>
+                    <form class="step-2">
+                        <input class="i-1" required placeholder="Укажите город*" name="sity" type="text">
+                        <input class="i-2" required placeholder="Улица*" name="street" type="text">
+                        <input class="i-3" required placeholder="№ дома*" name="house" type="text">
+                        <input class="i-4" placeholder="Квартира" name="apartment" type="text">
+                        <input class="i-5" placeholder="Этаж" name="floor" type="text">
+                        <input class="i-6" placeholder="Комментарий" name="comment" type="text">
+                    </form>
+                </div>
+                <div class="step">
+                    <h2 class="subtitle">3. Оплатить</h3>
+                </div>
+                <div class="step">
+                    <h2 class="subtitle">4. Когда доставить</h2>
+                </div>
+                <div class="step lastStep">
+                    <button id="secondSubmit" class="issue__btn blocked">Оформить заказ</button>
+                </div>
+        </div>
+    </div>
+
+    <!-- <form action="#">
+                <div class="modal__secondClose" data-secondClose>&times;</div>
                 <div class="modal__title">Введите ваши данные</div>
                 <input required placeholder="Введите имя" name="name" type="text" class="modal__input">
                 <input required placeholder="Введите номер" name="phone" type="phone" class="modal__input">
@@ -257,8 +299,6 @@
                 </button>
                 <button class="btn">Сделать заказ</button>
             </form> -->
-        </div>
-    </div>
 
     <script src="js/script.js"></script>
 </body>
