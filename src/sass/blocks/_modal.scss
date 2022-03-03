@@ -19,6 +19,9 @@
         border-radius: 10px;
         background-color: $bg-color;
         overflow-y: auto;
+        &::-webkit-scrollbar{
+            width: 0;
+        }
         .order {
             min-height: 125px;
             border-radius: 10px;
@@ -112,6 +115,9 @@
                                     height: 50%;
                                 }
                             }
+                            .del {
+                                background-color: $red-color;
+                            }
                             .count, .price {
                                 margin: 0 5px;
                                 font-weight: 700;
@@ -155,7 +161,7 @@
                     font-size: 18px;
                     line-height: 21px;
                     color: #A6A7AB;
-                    span {
+                    &__price {
                         font-weight: 700;
                         font-size: 20px;
                         color: #fff;

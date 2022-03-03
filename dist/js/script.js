@@ -9,15 +9,15 @@ window.addEventListener('DOMContentLoaded', () => {
         'pepperoni': {'count': 0, 'price': 1100, 'title': 'Пицца "Пепперони"', 'weight': 500, 'descr': 'Кальмары, мидии, креветки, сыр маасдам, красный лук, микс оливок, базилик, соус песто', 'class': 'warm'}
     };
     // витягування елементів html
-    const headerCounter = document.querySelector('.header__basket-counter'),  // лічильник товарів корзини
+    const headerCounter = document.querySelector('.header__basket-counter'),  // лічильник шапки
           cardsWrapper = document.querySelector('.menu__cards');  // область карток
-    // встановлення лічильника на 0
+    // встановлення лічильника шапки на 0
     headerCounter.innerHTML = 0;
+
     //============================ РЕНДЕР КАРТОК МЕНЮ =============================================================
-    // рендер карток меню
     const renderMenu = () => {
-        for (let key in cart) {
-            const menuCard = document.createElement('div');
+        for (let key in cart) {  // перебираємо об'єкт даних
+            const menuCard = document.createElement('div');  // шаблон картки
             menuCard.innerHTML = `
                 <div class="card all ${cart[key]['class']}" data-id="${key}">
                     <div class="card__cheked">
@@ -40,10 +40,10 @@ window.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
             `
-            cardsWrapper.append(menuCard);
+            cardsWrapper.append(menuCard);  // додаємо картку в область карток меню
         }
     }
-    renderMenu();
+    renderMenu();  // рендеримо картки меню перший раз
 
     //===================================== ТАБИ ========================================================
     const menuPanel = document.querySelector('.menu__panel'),   // область табів
@@ -59,31 +59,31 @@ window.addEventListener('DOMContentLoaded', () => {
     //===================================== КНОПКИ МЕНЮ ================================================= 
     const cards = cardsWrapper.querySelectorAll('.card');  // кожна сформована картка меню
 
-    cards.forEach(card => {
-        const id = card.dataset.id,
-              add = card.querySelector('.add'),
-              del = card.querySelector('.del');
-        card.addEventListener('click', (e) => {
+    cards.forEach(card => {  // перебираємо картки меню
+        const id = card.dataset.id,  // код товару
+              add = card.querySelector('.add'),  // кнопка додати до кошика
+              del = card.querySelector('.del');  // кнопка видалити з кошика
+        card.addEventListener('click', (e) => {  // подія кліку на картку
             // клік на кнопку додати до корзини
             if (e.target == add || e.target.classList.contains('add__icon')) { // якщо ми натиснули на кнопку додати до корзини
                 card.classList.add('active');  // картку робимо активною
                 headerCounter.innerHTML++;  // плюсуємо значення лічильника
-                cart[id]['count'] = 1;  // у масив корзину записуємо кількість 1
+                cart[id]['count'] = 1;  // у масив корзини записуємо кількість 1
             }
             // клік на кнопку видалити
             if (e.target == del || e.target.classList.contains('del__icon')) { // якщо ми натиснули на кнопку видалити
                 card.classList.remove('active');  // картку робимо не активною
                 headerCounter.innerHTML--;  // мінусуємо значення лічильника
-                cart[id]['count'] = 0;  // у масив корзину записуємо кількість 0
+                cart[id]['count'] = 0;  // у масив корзини записуємо кількість 0
             }
         });
     });
 
-    const clearActive = (key) => {
+    const clearActive = (key) => {  // функція зняття активності картки меню коли її видплили у кошику
         const cards = document.querySelectorAll('.card');  // кожна сформована картка меню
-        cards.forEach(card => {
-            if (card.dataset.id == key) {
-                card.classList.remove('active');
+        cards.forEach(card => {  // перебираємо картки меню
+            if (card.dataset.id == key) {  // якщо код товару співпадає з кодом видаленого товару у кошику
+                card.classList.remove('active');  // то знімаємо активність у цієї картки меню
             }
         });
     }
@@ -157,29 +157,28 @@ window.addEventListener('DOMContentLoaded', () => {
 
     bindModal('[data-modal]', '.modal', '[data-close]');
 
-    //============================ РЕНДЕР КАРТОК КОРЗИНИ =============================================================
-    // рендер елементів корзини
+    //============================ РЕНДЕР КОРЗИНИ =============================================================
     const renderCart = () => {
-        const headerCounter = document.querySelector('.header__basket-counter'),
-              order = document.querySelector('.order'),
-              empty = order.querySelector('.order__empty');
-        let toggleMinus;
+        const headerCounter = document.querySelector('.header__basket-counter'),  // лічильник шапки
+              order = document.querySelector('.order'),  // область карток корзини
+              empty = order.querySelector('.order__empty');  // заглушка коли не вибрано жодного товару
+        let toggleMinus;  // змінна котра міняє активність кнопку '-' (коли товарів 1шт. то кнопка не активна)
 
-        while (order.children.length != 1) {   // поки не лишиться 1 елемент (це order__empty)
+        while (order.children.length != 1) {   // поки не лишиться 1 елемент (це якраз заглушка order__empty)
             order.removeChild(order.lastChild);  // видаляємо всі картки
         }
-        if (headerCounter.innerHTML == 0) {
-            empty.style.display = 'flex';
-        } else {
-            empty.style.display = 'none';            
-            for (let key in cart) {
-                if (cart[key]['count'] != 0) {
-                    if (cart[key]['count'] == 1) {  // якщо до кліку на "-" у лічильнику 1
-                        toggleMinus = '<div class="minus-gray"><img src="./icons/minus.svg" alt="minus"></div>';
-                    } else {
-                        toggleMinus = '<div class="minus"><img class="minus__icon" src="./icons/minus.svg" alt="minus"></div>';
+        if (headerCounter.innerHTML == 0) {  // якщо лічильник шапки із значенням 0
+            empty.style.display = 'flex';  // показуємо заглушку
+        } else {                              // інакше
+            empty.style.display = 'none';     // не показуємо заглушку 
+            for (let key in cart) {             // для кожного ключа товару у базі даних корзини
+                if (cart[key]['count'] != 0) {  // якщо значення кількості не нульове то ми продовжуємо
+                    if (cart[key]['count'] == 1) {  // якщо кількість 1шт
+                        toggleMinus = '<div class="minus-gray"><img src="./icons/minus.svg" alt="minus"></div>';  // то записуємо у змінну кнопки '-' активний елемент
+                    } else {  // інакше
+                        toggleMinus = '<div class="minus"><img class="minus__icon" src="./icons/minus.svg" alt="minus"></div>';  // то записуємо у змінну кнопки '-' не активний елемент
                     }
-                    const cartCard = document.createElement('div');
+                    const cartCard = document.createElement('div');  // шаблон картки у корзині
                     cartCard.innerHTML = ` 
                         <div class="order__item" data-id="${key}">
                             <img src="./img/cards/${key}.png" alt="${key}">
@@ -205,113 +204,74 @@ window.addEventListener('DOMContentLoaded', () => {
                             <div class="divider"></div>
                         </div>
                     `
-                    order.append(cartCard);
+                    order.append(cartCard);  // додаємо картку в область карток корзини
                 }   
             } 
         }
-        onCart();
+        onCart();  // запускаємо функцію для зчитування кліку на кнопки (переписуємо orderCards, бо кожен раз після рендеру карток їх є різна кількість)
     }
+
+
 
     //===================================== КНОПКИ КОРЗИНИ ================================================= 
     const onCart = () => {
-        let orderCards = document.querySelectorAll('.order__item');  // кожна сформована картка корзини
-        orderCards.forEach(orderCard => {
-            const id = orderCard.dataset.id,
-                minus = orderCard.querySelector('.minus'),
-                count = orderCard.querySelector('.count'),
-                plus = orderCard.querySelector('.plus'),
-                price = orderCard.querySelector('.price'),
-                del = orderCard.querySelector('.del');
+        const orderCards = document.querySelectorAll('.order__item');  // кожна сформована картка корзини (кожен раз після рендеру містить різну кількість карток)
+        sumPrice(orderCards);
+        orderCards.forEach(orderCard => {  // перебираємо ці картки
+            const id = orderCard.dataset.id,// код товару
+                minus = orderCard.querySelector('.minus'),  // кнопка '-'
+                count = orderCard.querySelector('.count'),  // лічильник картки
+                plus = orderCard.querySelector('.plus'),  // кнопка '+'
+                price = orderCard.querySelector('.price'),  // панель з ціною картки
+                del = orderCard.querySelector('.del');  // кнопка видалення картки
 
-            orderCard.addEventListener('click', (e) => {
+            orderCard.addEventListener('click', (e) => {  // подія кліку на картку
                 // клік на кнопку '-'
-                if (e.target == minus || e.target.classList.contains('minus__icon')) { // якщо ми натиснули на кнопку '+'
-                    if (count.innerHTML == 2) {
-                        cart[id]['count']--;
-                        renderCart();
-                        return;
-                    }
+                if (e.target == minus || e.target.classList.contains('minus__icon')) { // якщо ми натиснули на кнопку '-'
+                    if (count.innerHTML == 2) {  // і при цьому у лічильнику картки було значення 2
+                        cart[id]['count']--;  // то значення у масиві корзини зменшуємо на 1
+                        renderCart();  // перезапускаємо рендер карток, (щоб підставилась неактивна кнопка)
+                        return;  // виходимо з умови
+                    }  // інакше
                     count.innerHTML--;  // значення лічильника зменшуємо на 1
                     cart[id]['count']--;  // значення у масиві корзини зменшуємо на 1
-                    price.innerHTML = `${cart[id]['price'] * cart[id]['count']} &#8381`;
+                    price.innerHTML = `${cart[id]['price'] * cart[id]['count']} &#8381`;  // встановлюємо поточну ціну (ціна * кількість)
+                    sumPrice(orderCards);
                 }
                 // клік на кнопку '+'
-                if (e.target == plus || e.target.classList.contains('plus__icon')) { // якщо ми натиснули на кнопку '+'
-                    if (count.innerHTML == 1) {
-                        cart[id]['count']++;
-                        renderCart();
-                        return;
-                    }
+                if (e.target == plus || e.target.classList.contains('plus__icon')) {  // якщо ми натиснули на кнопку '+'
+                    if (count.innerHTML == 1) {  // і при цьому у лічильнику картки було значення 1
+                        cart[id]['count']++;  // то значення у масиві корзини збільшуємо на 1
+                        renderCart();  // перезапускаємо рендер карток, (щоб підставилась активна кнопка)
+                        return;  // виходимо з умови
+                    }  // інакше
                     count.innerHTML++;  // значення лічильника збільшуємо на 1
                     cart[id]['count']++;  // значення у масиві корзини збільшуємо на 1
-                    price.innerHTML = `${cart[id]['price'] * cart[id]['count']} &#8381`;
+                    price.innerHTML = `${cart[id]['price'] * cart[id]['count']} &#8381`;  // встановлюємо поточну ціну (ціна * кількість)
+                    sumPrice(orderCards);
                 }
                 // клік на кнопку видалити
                 if (e.target == del || e.target.classList.contains('del__icon')) { // якщо ми натиснули на кнопку видалити
-                    headerCounter.innerHTML--;  // мінусуємо значення лічильника
+                    headerCounter.innerHTML--;  // мінусуємо значення лічильника шапки
                     cart[id]['count'] = 0;  // у масив корзину записуємо кількість 0
-                    renderCart();
-                    clearActive(id);
+                    renderCart();  // перезапускаємо рендер карток, (щоб видалилася поточна картка)
+                    clearActive(id);  // запускаємо функцію котра зніме активність картки меню
                 }
             });
         });
     }
-    
-});
-/*     //============================ МЕНЮ =============================================================
-   
+    // функція для перерахунку загальної суми
+    const sumPrice = (selectors) => {
+        const finishPrice = document.querySelector('.sum__price');
+        let startPrice = 0;
 
-
-    //==================== КНОПКИ МЕНЮ ================================================= 
-    // взаємодія з картками
-    cards.forEach(card => {
-        
-        // витягування елементів кожної картки
-        const id = card.dataset.id,
-                    counter = card.querySelector('.card__counter'),
-                    price = card.querySelector('.price'),
-                    add = card.querySelector('.add'),
-                    minus = card.querySelector('.minus'),
-                    plus = card.querySelector('.plus');
-        // функція оновлення ціни на картці
-        const setPrice = () => {
-            price.innerHTML = `${cart[id]['price']} &#8381`;
-        }
-        // навішуємо всі кліки на картку
-        card.addEventListener('click', (e) => {
-            // клік на кнопку додати до корзини
-            if (e.target == add || e.target.classList.contains('add__icon')) { // якщо ми натиснули на кнопку додати до корзини
-                counter.innerHTML = 1; // у лічильнику встановлюємо значення 1
-                cart[id]['count'] = 1;  // у масив корзину записуємо кількість 1
-                card.classList.add('active');  // картку робимо активною
-                headerCounter.innerHTML++;
-                renderCart();
-            }
-            // клік на кнопку "+"
-            if (e.target == plus || e.target.classList.contains('plus__icon')) { // якщо ми натиснули на кнопку '+'
-                counter.innerHTML++;  // значення лічильника збільшуємо на 1
-                cart[id]['count']++;  // значення у масиві корзині збільшуємо на 1
-                let sumPrice = cart[id]['price'] * cart[id]['count'];
-                price.innerHTML = `${sumPrice} &#8381`;
-                headerCounter.innerHTML++;
-                renderCart();
-            }
-            // клік на кнопку "-"
-            if (e.target == minus || e.target.classList.contains('minus__icon')) { // якщо ми натиснули на кнопку '+'
-                if (counter.innerHTML == 1) {  // якщо до кліку на "-" у лічильнику було 1
-                    card.classList.remove('active');  // картку робимо  не активною
-                    cart[id]['count'] = 0;  // значення у масиві корзині 0
-                    setPrice();
-                    headerCounter.innerHTML--;
-                    renderCart();
-                    return;
-                }
-                counter.innerHTML--;  // значення лічильника зменшуємо на 1
-                cart[id]['count']--;  // значення у масиві корзині зменшуємо на 1
-                let sumPrice = cart[id]['price'] * cart[id]['count'];
-                price.innerHTML = `${sumPrice} &#8381`;
-                headerCounter.innerHTML--;
-                renderCart();
-            }
+        selectors.forEach((selector) => {
+            const price = selector.querySelector('.price');
+            startPrice += +(price.innerHTML.slice(0,-2));
         });
-    }); */
+
+        finishPrice.innerHTML = `${startPrice} &#8381`;
+    }
+
+
+});
