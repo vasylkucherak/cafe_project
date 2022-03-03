@@ -244,61 +244,58 @@
         <div class="modal__content">
             <div class="modal__secondClose" data-secondClose>&times;</div>
             <h2 class="modal__title">Оформление заказа</h2>
-                <div class="step">
-                    <h3 class="subtitle">1. Контактная информация</h3>
-                    <form class="step-1">
-                        <input required placeholder="Имя*" name="name" type="text">
-                        <input required placeholder="Телефон*" name="phone" type="phone">
-                    </form>
+            <div class="step">
+                <h3 class="subtitle">1. Контактная информация</h3>
+                <form class="step-1">
+                    <input required placeholder="Имя*" name="name" type="text">
+                    <input required placeholder="Телефон*" name="phone" type="phone">
+                </form>
+            </div>
+            <div class="step">
+                <h2 class="subtitle">2. Доставка</h2>
+                <div class="radio">
+                    <div class="radio__btn active">Доставка</div>
+                    <div class="radio__btn">Самовывоз</div>
                 </div>
-                <div class="step">
-                    <h2 class="subtitle">2. Доставка</h2>
-                    <div class="radio">
-                        <div class="radio__btn active">Доставка</div>
-                        <div class="radio__btn">Самовывоз</div>
-                    </div>
-                    <p class="step__title">Адрес доставки</p>
-                    <form class="step-2">
-                        <input class="i-1" required placeholder="Укажите город*" name="sity" type="text">
-                        <input class="i-2" required placeholder="Улица*" name="street" type="text">
-                        <input class="i-3" required placeholder="№ дома*" name="house" type="text">
-                        <input class="i-4" placeholder="Квартира" name="apartment" type="text">
-                        <input class="i-5" placeholder="Этаж" name="floor" type="text">
-                        <input class="i-6" placeholder="Комментарий" name="comment" type="text">
-                    </form>
+                <p class="step__title">Адрес доставки</p>
+                <form class="step-2">
+                    <input class="i-1" required placeholder="Укажите город*" name="sity" type="text">
+                    <input class="i-2" required placeholder="Улица*" name="street" type="text">
+                    <input class="i-3" required placeholder="№ дома*" name="house" type="text">
+                    <input class="i-4" placeholder="Квартира" name="apartment" type="text">
+                    <input class="i-5" placeholder="Этаж" name="floor" type="text">
+                    <input class="i-6" placeholder="Комментарий" name="comment" type="text">
+                </form>
+            </div>
+            <div class="step">
+                <h2 class="subtitle">3. Оплатить</h2>
+                <div class="radio-3">
+                    <div class="radio__btn active">Наличными</div>
+                    <div class="radio__btn">Курьеру картой</div>
+                    <div class="radio__btn">Оплата онлайн</div>
                 </div>
-                <div class="step">
-                    <h2 class="subtitle">3. Оплатить</h3>
-                </div>
-                <div class="step">
-                    <h2 class="subtitle">4. Когда доставить</h2>
-                </div>
-                <div class="step lastStep">
-                    <button id="secondSubmit" class="issue__btn blocked">Оформить заказ</button>
-                </div>
+            </div>
+            <div class="step">
+                <h2 class="subtitle">4. Хотите мы позвоним?</h2>
+                <label>
+                    <input checked name="call" type="radio" value="not-call" class="radio-call">
+                    <span>Не перезванивать</span>
+                </label>
+                <br>
+                <label>
+                    <input name="call" type="radio" value="call" class="radio-call">
+                    <span>Потребуется звонок оператора</span>
+                </label>
+            </div>
+            <div class="step lastStep">
+                <button id="secondSubmit" class="issue__btn blocked">Оформить заказ</button>
+                <label>
+                    <input required name="agree" type="checkbox" class="agree">
+                    <span>Я согласен на обработку моих перс. данных в соответствии с <a class="policy" href="#">Условиями</a></span>
+                </label>
+            </div>
         </div>
     </div>
-
-    <!-- <form action="#">
-                <div class="modal__secondClose" data-secondClose>&times;</div>
-                <div class="modal__title">Введите ваши данные</div>
-                <input required placeholder="Введите имя" name="name" type="text" class="modal__input">
-                <input required placeholder="Введите номер" name="phone" type="phone" class="modal__input">
-                <div class="location">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M4.23914 10.3913C4.25354 6.15071 7.7029 2.72471 11.9435 2.73912C16.1841 2.75353 19.6101 6.20288 19.5957 10.4435V10.5304C19.5435 13.2869 18.0044 15.8348 16.1174 17.8261C15.0382 18.9467 13.8331 19.9388 12.5261 20.7826C12.1766 21.0849 11.6582 21.0849 11.3087 20.7826C9.3602 19.5143 7.65007 17.9131 6.25653 16.0522C5.01449 14.4294 4.3093 12.4597 4.23914 10.4174L4.23914 10.3913Z" stroke="#CFCFCF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <circle cx="11.9174" cy="10.5391" r="2.46087" stroke="#CFCFCF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </div>
-                <input type="text" name="search" placeholder="Введите адрес доставки" required>
-                <button name="search">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="11.7666" cy="11.7666" r="8.98856" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M18.0183 18.4851L21.5423 22" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </button>
-                <button class="btn">Сделать заказ</button>
-            </form> -->
 
     <script src="js/script.js"></script>
 </body>
