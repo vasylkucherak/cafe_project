@@ -85,7 +85,7 @@
             display: flex;
             flex-direction: column;
             margin: 50px 8px 0 8px;
-            min-width: 330px;
+            width: 330px;
             height: 385px;
             border-radius: 10px;
             background: $input-color;
@@ -188,5 +188,20 @@
                 }
             }
         }
+    }
+}
+.animated {
+    animation-duration:1s;
+    animation-fill-mode:both;
+}
+.fadeIn {
+    animation-name:fadeIn
+}
+@keyframes fadeIn {
+    from {
+        opacity:0
+    }
+    to {
+        opacity:1
     }
 }
