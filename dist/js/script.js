@@ -6,7 +6,23 @@ window.addEventListener('DOMContentLoaded', () => {
         'turkey': {'count': 0, 'price': 1450, 'title': 'Индейка', 'weight': 650, 'descr': 'Фаршированный гречневой кашей,<br>курагой, апельсином и зеленым яблоком', 'class': 'meat'},
         'fish': {'count': 0, 'price': 1900, 'title': 'Рыба', 'weight': 775, 'descr': 'Фаршированная яблоками и лимоном', 'class': 'fish'},
         'duck': {'count': 0, 'price': 1230, 'title': 'Утка', 'weight': 525, 'descr': 'Фаршированная рисом, курагой и айвой', 'class': 'meat'},
-        'pepperoni': {'count': 0, 'price': 1100, 'title': 'Пицца "Пепперони"', 'weight': 500, 'descr': 'Кальмары, мидии, креветки, сыр маасдам, красный лук, микс оливок, базилик, соус песто', 'class': 'warm'}
+        'mushroom-cream-soup': {'count': 0, 'price': 720, 'title': 'Грибной крем суп', 'weight': 320, 'descr': 'Шампиньоны, куриное филе, сливки, чеснок, укроп', 'class': 'soup'},
+        'borsch': {'count': 0, 'price': 780, 'title': 'Борщ', 'weight': 350, 'descr': 'свинные ребрышки, свекла, картошка, петрушка, морковы, лук', 'class': 'soup'},
+        'okinawa-sushi': {'count': 0, 'price': 2060, 'title': 'Суши "Окинава"', 'weight': 260, 'descr': 'Угорь, креветка, сливочный сыр', 'class': 'sushi'},
+        'keishi-sushi': {'count': 0, 'price': 1940, 'title': 'Суши "Кейши"', 'weight': 240, 'descr': 'Лосось, тунец, креветка, авокадо, икра тобико', 'class': 'sushi'},
+        'pepperoni': {'count': 0, 'price': 1260, 'title': 'Пицца "Пепперони"', 'weight': 500, 'descr': 'Кр. соус, сыр, салями, ветчина, бекон, чери, перец пепперони, специи', 'class': 'pizza'},
+        'chease4': {'count': 0, 'price': 1350, 'title': 'Пицца "4 сыра"', 'weight': 500, 'descr': 'Бел. соус, моцарелла, дор-блю, бри, пармезан, специи', 'class': 'pizza'},
+        'hawaiian': {'count': 0, 'price': 1080, 'title': 'Пицца "Гавайская"', 'weight': 500, 'descr': 'Кр. соус, сыр, куриное филе, ананасы, специи', 'class': 'pizza'},
+        'kalcone': {'count': 0, 'price': 1260, 'title': 'Пицца "Кальцоне"', 'weight': 500, 'descr': 'Моцарелла, куриное филе, шампиньоны, томаты, базилик, специи', 'class': 'pizza'},
+        'margherita': {'count': 0, 'price': 1080, 'title': 'Пицца "Маргаритта"', 'weight': 500, 'descr': 'Моцарелла, томаты, фирменный томатный соус, специи', 'class': 'pizza'},
+        'bavarian': {'count': 0, 'price': 1080, 'title': 'Пицца "Баварская"', 'weight': 500, 'descr': 'Кр. соус, колбаски, сыр, шампиньоны, томаты, специи', 'class': 'pizza'},
+        'tartaletki': {'count': 0, 'price': 380, 'title': 'Тарталетки', 'weight': 180, 'descr': 'Куриное филе, ананас, сыр, чеснок, грецкий орех, соус', 'class': 'cold'},
+        'canape': {'count': 0, 'price': 450, 'title': 'Канапе', 'weight': 180, 'descr': 'Красная рыба, авокадо, огурец, оливки, чёрный хлеб', 'class': 'cold fish'},
+        'chips': {'count': 0, 'price': 320, 'title': 'Фирменные чипсы', 'weight': 180, 'descr': 'Картофельные чипсы, томатный соус, специи', 'class': 'cold'},
+        'beer': {'count': 0, 'price': 250, 'title': 'Фирменное пиво', 'weight': 500, 'descr': 'Хмель, ячменный солод, дрожжи', 'class': 'drink'},
+        'fresh': {'count': 0, 'price': 350, 'title': 'Арбузный фреш', 'weight': 300, 'descr': 'Арбуз, лайм, мята', 'class': 'drink'},
+        'coffe': {'count': 0, 'price': 200, 'title': 'Коффе', 'weight': 150, 'descr': 'Молотый кофе, сливки', 'class': 'drink'},
+        'tea': {'count': 0, 'price': 150, 'title': 'Чай', 'weight': 200, 'descr': 'Черный чай, лимон', 'class': 'drink'}
     };
     // витягування елементів html
     const headerCounter = document.querySelector('.header__basket-counter'),  // лічильник шапки
