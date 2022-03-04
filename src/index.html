@@ -240,58 +240,60 @@
 
     <div class="secondModal">
         <div class="modal__content">
-            <div class="modal__secondClose" data-secondClose>&times;</div>
-            <h2 class="modal__title">Оформление заказа</h2>
-            <div class="step">
-                <h3 class="subtitle">1. Контактная информация</h3>
-                <form class="step-1">
-                    <input required placeholder="Имя*" name="name" type="text">
-                    <input required placeholder="Телефон*" name="phone" type="phone">
-                </form>
-            </div>
-            <div class="step">
-                <h2 class="subtitle">2. Доставка</h2>
-                <div class="radio">
-                    <div class="radio__btn import active">Доставка</div>
-                    <div class="radio__btn import">Самовывоз</div>
+            <form id="ordering">
+                <div class="modal__secondClose" data-secondClose>&times;</div>
+                <h2 class="modal__title">Оформление заказа</h2>
+                <div class="step">
+                    <h3 class="subtitle">1. Контактная информация</h3>
+                    <div class="step-1">
+                        <input required placeholder="Имя*" name="name" type="text" class="checkRequired">
+                        <input required placeholder="Телефон*" name="phone" type="phone" class="checkRequired">
+                    </div>
                 </div>
-                <p class="step__title">Адрес доставки</p>
-                <form class="step-2">
-                    <input class="i-1" required placeholder="Укажите город*" name="sity" type="text">
-                    <input class="i-2" required placeholder="Улица*" name="street" type="text">
-                    <input class="i-3" required placeholder="№ дома*" name="house" type="text">
-                    <input class="i-4" placeholder="Квартира" name="apartment" type="text">
-                    <input class="i-5" placeholder="Этаж" name="floor" type="text">
-                    <input class="i-6" placeholder="Комментарий" name="comment" type="text">
-                </form>
-            </div>
-            <div class="step">
-                <h2 class="subtitle">3. Оплатить</h2>
-                <div class="radio-3">
-                    <div class="radio__btn pay active">Наличными</div>
-                    <div class="radio__btn pay">Курьеру картой</div>
-                    <div class="radio__btn pay">Оплата онлайн</div>
+                <div class="step">
+                    <h2 class="subtitle">2. Доставка</h2>
+                    <div class="radio">
+                        <div class="radio__btn import active">Доставка</div>
+                        <div class="radio__btn import">Самовывоз</div>
+                    </div>
+                    <p class="step__title">Адрес доставки</p>
+                    <div class="step-2">
+                        <input class="i-1 checkRequired" required placeholder="Укажите город*" name="sity" type="text">
+                        <input class="i-2 checkRequired" required placeholder="Улица*" name="street" type="text">
+                        <input class="i-3 checkRequired" required placeholder="№ дома*" name="house" type="text">
+                        <input class="i-4" placeholder="Квартира" name="apartment" type="text">
+                        <input class="i-5" placeholder="Этаж" name="floor" type="text">
+                        <input class="i-6" placeholder="Комментарий" name="comment" type="text">
+                    </div>
                 </div>
-            </div>
-            <div class="step">
-                <h2 class="subtitle">4. Хотите мы позвоним?</h2>
-                <label>
-                    <input checked name="call" type="radio" value="not-call" class="radio-call">
-                    <span>Не перезванивать</span>
-                </label>
-                <br>
-                <label>
-                    <input name="call" type="radio" value="call" class="radio-call">
-                    <span>Потребуется звонок оператора</span>
-                </label>
-            </div>
-            <div class="step lastStep">
-                <button id="secondSubmit" class="issue__btn blocked">Оформить заказ</button>
-                <label>
-                    <input required name="agree" type="checkbox" class="agree">
-                    <span>Я согласен на обработку моих перс. данных в соответствии с <a class="policy" href="#">Условиями</a></span>
-                </label>
-            </div>
+                <div class="step">
+                    <h2 class="subtitle">3. Оплатить</h2>
+                    <div class="radio-3">
+                        <div class="radio__btn pay active">Наличными</div>
+                        <div class="radio__btn pay">Курьеру картой</div>
+                        <div class="radio__btn pay">Оплата онлайн</div>
+                    </div>
+                </div>
+                <div class="step">
+                    <h2 class="subtitle">4. Хотите мы позвоним?</h2>
+                    <label>
+                        <input checked name="call" type="radio" value="not-call" class="radio-call">
+                        <span>Не перезванивать</span>
+                    </label>
+                    <br>
+                    <label>
+                        <input name="call" type="radio" value="call" class="radio-call">
+                        <span>Потребуется звонок оператора</span>
+                    </label>
+                </div>
+                <div class="step lastStep">
+                    <input type="submit" id="secondSubmit" placeholder="Оформить заказ" class="issue__btn blocked">
+                    <label>
+                        <input required name="agree" type="checkbox" class="agree">
+                        <span>Я согласен на обработку моих перс. данных в соответствии с <a class="policy" href="#">Условиями</a></span>
+                    </label>
+                </div>
+            </form>
         </div>
     </div>
 

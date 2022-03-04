@@ -201,7 +201,6 @@
         .step {
             margin: 0 auto 20px auto;
             padding: 30px;
-            //max-width: 672px;
             min-height: 85px;
             &.lastStep {
                 padding: 17px 20px 17px 30px;
@@ -260,7 +259,7 @@
                 line-height: 22px;
                 color: #fff;
             }
-            form {
+            div {
                 &.step-1 {
                     display: grid;
                     grid-template: 60px / repeat(2, 1fr);

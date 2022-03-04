@@ -371,7 +371,6 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     //==================================== ПЕРЕМИКАЧІ У МОДАЛЬНОМУ ВІКНІ ======================================
-    //import pay
     const importRadioBtn = document.querySelectorAll('.import'),
           payRadioBtn = document.querySelectorAll('.pay');
 
@@ -385,4 +384,42 @@ window.addEventListener('DOMContentLoaded', () => {
     }
     toggleRadioBtn(importRadioBtn);
     toggleRadioBtn(payRadioBtn);
+
+    //===================================== ВАЛІДАТОР ДЛЯ ДРУГОЇ ФОРМИ ===========================================
+    const form = document.querySelector('#ordering'),
+          submitBtn = form.querySelector('#secondSubmit'),
+          requiredInputs = form.querySelectorAll('.checkRequired'),
+          requiredCheckbox = form.querySelector('.agree');
+
+    let filled = [], 
+        filledCount;
+
+    requiredInputs.forEach((requiredInput, i) => {
+        requiredInput.addEventListener('input', () => {
+            filledCount = 0;
+            if (requiredInput.value) {  // якщо щось введено
+                filled[i] = true;
+            } else {
+                filled[i] = false;
+            }
+            for (let x = 0; x < filled.length; x++) {
+                if (filled[x]) {
+                    filledCount++;
+                }
+            }
+            changeSubmitBtn();
+        });  
+    });
+    
+    requiredCheckbox.addEventListener('change', () => {
+        changeSubmitBtn();
+    });
+
+    const changeSubmitBtn = () => {
+        if (filledCount == 5 && requiredCheckbox.checked) {
+            submitBtn.classList.remove('blocked');
+        } else {
+            submitBtn.classList.add('blocked');
+        }
+    }
 });
