@@ -189,26 +189,23 @@
             font-weight: 400;
             font-size: 14px;
             line-height: 57px;
-            &.all {
+            &#all {
                 min-width: 103px;
                 margin-left:10px;
             }
-            &.cold {
+            &#cold {
                 min-width: 152px;
             }
-            &.pizza {
+            &#pizza {
                 min-width: 74px;
             }
-            &.meat, &.fish {
+            &#meat, &#fish {
                 min-width: 130px;
             }
-            &.soup {
-                min-width: 65px;
+            &#soup, &#sushi {
+                min-width: 67px;
             }
-            &.grill {
-                min-width: 108px;
-            }
-            &.drink {
+            &#drink {
                 min-width: 86px;
                 margin-right: 10px;
             }

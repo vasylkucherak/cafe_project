@@ -20,26 +20,26 @@
         line-height: 78px;
         cursor: pointer;
         color: $gray-color;
-        &.all {
+        &#all {
             min-width: 142px;
             margin-left: 50px;
         }
-        &.cold {
+        &#cold {
             min-width: 205px;
         }
-        &.pizza {
+        &#pizza {
             min-width: 108px;
         }
-        &.meat, &.fish {
+        &#meat, &#fish {
             min-width: 176px;
         }
-        &.soup {
+        &#soup {
             min-width: 94px;
         }
-        &.grill {
-            min-width: 146px;
+        &#sushi {
+            min-width: 98px;
         }
-        &.drink {
+        &#drink {
             min-width: 120px;
             margin-right: 50px;
         }

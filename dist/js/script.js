@@ -16,7 +16,7 @@ window.addEventListener('DOMContentLoaded', () => {
         'kalcone': {'count': 0, 'price': 1260, 'title': 'Пицца "Кальцоне"', 'weight': 500, 'descr': 'Моцарелла, куриное филе, шампиньоны, томаты, базилик, специи', 'class': 'pizza meat'},
         'margherita': {'count': 0, 'price': 1080, 'title': 'Пицца "Маргаритта"', 'weight': 500, 'descr': 'Моцарелла, томаты, фирменный томатный соус, специи', 'class': 'pizza'},
         'bavarian': {'count': 0, 'price': 1080, 'title': 'Пицца "Баварская"', 'weight': 500, 'descr': 'Кр. соус, колбаски, сыр, шампиньоны, томаты, специи', 'class': 'pizza meat'},
-        'tartaletki': {'count': 0, 'price': 380, 'title': 'Тарталетки', 'weight': 180, 'descr': 'Куриное филе, ананас, сыр, чеснок, грецкий орех, соус', 'class': 'cold meat'},
+        'tartaletki': {'count': 0, 'price': 380, 'title': 'Тарталетки', 'weight': 180, 'descr': 'Куриное филе, ананас, сыр, чеснок, грецкий орех, соус', 'class': 'cold meat&#sushi'},
         'canape': {'count': 0, 'price': 450, 'title': 'Канапе', 'weight': 180, 'descr': 'Красная рыба, авокадо, огурец, оливки, чёрный хлеб', 'class': 'cold fish'},
         'chips': {'count': 0, 'price': 320, 'title': 'Фирменные чипсы', 'weight': 180, 'descr': 'Картофельные чипсы, томатный соус, специи', 'class': 'cold'},
         'beer': {'count': 0, 'price': 250, 'title': 'Фирменное пиво', 'weight': 500, 'descr': 'Хмель, ячменный солод, дрожжи', 'class': 'drink'},
@@ -170,7 +170,7 @@ window.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    //==================== ВІДКРИТТЯ МОДАЛЬНОГО ВІКНА ===================================================
+    //==================== ВІДКРИТТЯ МОДАЛЬНИХ ВІКОН ===================================================
     function bindModal(triggerSelector, modalSelector, closeSelector, submitSelector, closeOnModalClick = false) {
 
         const trigger = document.querySelectorAll(triggerSelector),
@@ -369,4 +369,20 @@ window.addEventListener('DOMContentLoaded', () => {
             finishPrice.classList.add('danger');
         }
     }
+
+    //==================================== ПЕРЕМИКАЧІ У МОДАЛЬНОМУ ВІКНІ ======================================
+    //import pay
+    const importRadioBtn = document.querySelectorAll('.import'),
+          payRadioBtn = document.querySelectorAll('.pay');
+
+    const toggleRadioBtn = (selectors) => {
+        selectors.forEach(selector => {
+            selector.addEventListener('click', () => {
+                selectors.forEach(selector => selector.classList.remove('active'));
+                selector.classList.add('active'); 
+            });
+        });
+    }
+    toggleRadioBtn(importRadioBtn);
+    toggleRadioBtn(payRadioBtn);
 });
