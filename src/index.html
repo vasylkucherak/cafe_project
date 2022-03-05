@@ -11,13 +11,22 @@
 <body onselectstart="return false">
     <header class="header">
         <div class="container">
-            <button class="menu">
+            <button id="burger" class="menu">
                 <div class="menu__burger">
                     <div class="menu__burger-elem"></div>
                     <div class="menu__burger-elem"></div>
                     <div class="menu__burger-elem"></div>
                 </div>
                 <div class="menu__text">МЕНЮ</div>
+                <div class="burger-items">
+                    <a class="burger-item" href="#">О ресторане</a>
+                    <div class="burger-divider"></div>
+                    <a class="burger-item" href="#">Условия доставки</a>
+                    <div class="burger-divider"></div>
+                    <a class="burger-item" href="#">Акции</a>
+                    <div class="burger-divider"></div>
+                    <a data-modal class="link burger-item" href="#">Корзина</a>
+                </div>
             </button>
             <a class="header__logo" href="#">LOGOS</a>
             <div class="header__info">

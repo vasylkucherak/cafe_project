@@ -86,7 +86,7 @@
             flex-direction: column;
             margin: 50px 8px 0 8px;
             width: 330px;
-            height: 385px;
+            min-height: 385px;
             border-radius: 10px;
             background: $input-color;
             &.active {

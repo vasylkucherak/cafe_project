@@ -30,6 +30,14 @@ window.addEventListener('DOMContentLoaded', () => {
     // встановлення лічильника шапки на 0
     headerCounter.innerHTML = 0;
 
+    //============================ БУРГЕР (МОБІЛЬНА ВЕРСІЯ) =======================================================
+    const burger = document.querySelector('#burger'),
+          burgerLinks = document.querySelector('.burger-items');
+    burger.addEventListener('click', () => {
+        burgerLinks.classList.toggle('active');
+        burger.classList.toggle('active');
+    });
+
     //============================ РЕНДЕР КАРТОК МЕНЮ =============================================================
     const renderMenu = () => {
         for (let key in cart) {  // перебираємо об'єкт даних

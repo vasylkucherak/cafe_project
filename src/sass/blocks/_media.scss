@@ -359,6 +359,7 @@
                 &__item {
                     .dish {
                         flex-direction: column;
+                        justify-content: space-between;
                         .text {
                             .title {
                                 text-align: center;
