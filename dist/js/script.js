@@ -2,31 +2,33 @@ window.addEventListener('DOMContentLoaded', () => {
     'use strict';
     // об'єкт з кількістю товарів у корзині
     let cart = {
-        'lamb': {'count': 0, 'price': 1620, 'title': 'Ягненок', 'weight': 750, 'descr': 'Фаршированный гречневой кашей,<br>курагой, апельсином и зеленым яблоком', 'class': 'meat'},
-        'turkey': {'count': 0, 'price': 1450, 'title': 'Индейка', 'weight': 650, 'descr': 'Фаршированный гречневой кашей,<br>курагой, апельсином и зеленым яблоком', 'class': 'meat'},
-        'fish': {'count': 0, 'price': 1900, 'title': 'Рыба', 'weight': 775, 'descr': 'Фаршированная яблоками и лимоном', 'class': 'fish'},
-        'duck': {'count': 0, 'price': 1230, 'title': 'Утка', 'weight': 525, 'descr': 'Фаршированная рисом, курагой и айвой', 'class': 'meat'},
-        'mushroom-cream-soup': {'count': 0, 'price': 720, 'title': 'Грибной крем суп', 'weight': 320, 'descr': 'Шампиньоны, куриное филе, сливки, чеснок, укроп', 'class': 'soup'},
-        'borsch': {'count': 0, 'price': 780, 'title': 'Борщ', 'weight': 350, 'descr': 'свинные ребрышки, свекла, картошка, петрушка, морковы, лук', 'class': 'soup meat'},
-        'okinawa-sushi': {'count': 0, 'price': 2060, 'title': 'Суши "Окинава"', 'weight': 260, 'descr': 'Угорь, креветка, сливочный сыр', 'class': 'sushi fish'},
-        'keishi-sushi': {'count': 0, 'price': 1940, 'title': 'Суши "Кейши"', 'weight': 240, 'descr': 'Лосось, тунец, креветка, авокадо, икра тобико', 'class': 'sushi fish'},
-        'pepperoni': {'count': 0, 'price': 1260, 'title': 'Пицца "Пепперони"', 'weight': 500, 'descr': 'Кр. соус, сыр, салями, ветчина, бекон, чери, перец пепперони, специи', 'class': 'pizza meat'},
-        'chease4': {'count': 0, 'price': 1350, 'title': 'Пицца "4 сыра"', 'weight': 500, 'descr': 'Бел. соус, моцарелла, дор-блю, бри, пармезан, специи', 'class': 'pizza'},
-        'hawaiian': {'count': 0, 'price': 1080, 'title': 'Пицца "Гавайская"', 'weight': 500, 'descr': 'Кр. соус, сыр, куриное филе, ананасы, специи', 'class': 'pizza meat'},
-        'kalcone': {'count': 0, 'price': 1260, 'title': 'Пицца "Кальцоне"', 'weight': 500, 'descr': 'Моцарелла, куриное филе, шампиньоны, томаты, базилик, специи', 'class': 'pizza meat'},
-        'margherita': {'count': 0, 'price': 1080, 'title': 'Пицца "Маргаритта"', 'weight': 500, 'descr': 'Моцарелла, томаты, фирменный томатный соус, специи', 'class': 'pizza'},
-        'bavarian': {'count': 0, 'price': 1080, 'title': 'Пицца "Баварская"', 'weight': 500, 'descr': 'Кр. соус, колбаски, сыр, шампиньоны, томаты, специи', 'class': 'pizza meat'},
-        'tartaletki': {'count': 0, 'price': 380, 'title': 'Тарталетки', 'weight': 180, 'descr': 'Куриное филе, ананас, сыр, чеснок, грецкий орех, соус', 'class': 'cold meat&#sushi'},
-        'canape': {'count': 0, 'price': 450, 'title': 'Канапе', 'weight': 180, 'descr': 'Красная рыба, авокадо, огурец, оливки, чёрный хлеб', 'class': 'cold fish'},
-        'chips': {'count': 0, 'price': 320, 'title': 'Фирменные чипсы', 'weight': 180, 'descr': 'Картофельные чипсы, томатный соус, специи', 'class': 'cold'},
-        'beer': {'count': 0, 'price': 250, 'title': 'Фирменное пиво', 'weight': 500, 'descr': 'Хмель, ячменный солод, дрожжи', 'class': 'drink'},
-        'fresh': {'count': 0, 'price': 350, 'title': 'Арбузный фреш', 'weight': 300, 'descr': 'Арбуз, лайм, мята', 'class': 'drink'},
-        'coffe': {'count': 0, 'price': 200, 'title': 'Коффе', 'weight': 150, 'descr': 'Молотый кофе, сливки', 'class': 'drink'},
-        'tea': {'count': 0, 'price': 150, 'title': 'Чай', 'weight': 200, 'descr': 'Черный чай, лимон', 'class': 'drink'}
+        'lamb': {'count': 0, 'price': 1620, 'title': 'Ягненок', 'weight': 750, 'descr': 'Фаршированный гречневой кашей,<br>курагой, апельсином и зеленым яблоком', class: ['meat']},
+        'turkey': {'count': 0, 'price': 1450, 'title': 'Индейка', 'weight': 650, 'descr': 'Фаршированный гречневой кашей,<br>курагой, апельсином и зеленым яблоком', class: ['meat']},
+        'fish': {'count': 0, 'price': 1900, 'title': 'Рыба', 'weight': 775, 'descr': 'Фаршированная яблоками и лимоном', 'class': ['fish']},
+        'duck': {'count': 0, 'price': 1230, 'title': 'Утка', 'weight': 525, 'descr': 'Фаршированная рисом, курагой и айвой', 'class': ['meat']},
+        'mushroom-cream-soup': {'count': 0, 'price': 720, 'title': 'Грибной крем суп', 'weight': 320, 'descr': 'Шампиньоны, куриное филе, сливки, чеснок, укроп', class: ['soup']},
+        'borsch': {'count': 0, 'price': 780, 'title': 'Борщ', 'weight': 350, 'descr': 'свинные ребрышки, свекла, картошка, петрушка, морковы, лук', class: ['soup', 'meat']},
+        'okinawa-sushi': {'count': 0, 'price': 2060, 'title': 'Суши "Окинава"', 'weight': 260, 'descr': 'Угорь, креветка, сливочный сыр', class: ['sushi', 'fish']},
+        'keishi-sushi': {'count': 0, 'price': 1940, 'title': 'Суши "Кейши"', 'weight': 240, 'descr': 'Лосось, тунец, креветка, авокадо, икра тобико', class: ['sushi', 'fish']},
+        'pepperoni': {'count': 0, 'price': 1260, 'title': 'Пицца "Пепперони"', 'weight': 500, 'descr': 'Кр. соус, сыр, салями, ветчина, бекон, чери, перец пепперони, специи', class: ['pizza', 'meat']},
+        'chease4': {'count': 0, 'price': 1350, 'title': 'Пицца "4 сыра"', 'weight': 500, 'descr': 'Бел. соус, моцарелла, дор-блю, бри, пармезан, специи', class: ['pizza']},
+        'hawaiian': {'count': 0, 'price': 1080, 'title': 'Пицца "Гавайская"', 'weight': 500, 'descr': 'Кр. соус, сыр, куриное филе, ананасы, специи', class: ['pizza', 'meat']},
+        'kalcone': {'count': 0, 'price': 1260, 'title': 'Пицца "Кальцоне"', 'weight': 500, 'descr': 'Моцарелла, куриное филе, шампиньоны, томаты, базилик, специи', class: ['pizza', 'meat']},
+        'margherita': {'count': 0, 'price': 1080, 'title': 'Пицца "Маргаритта"', 'weight': 500, 'descr': 'Моцарелла, томаты, фирменный томатный соус, специи', class: ['pizza']},
+        'bavarian': {'count': 0, 'price': 1080, 'title': 'Пицца "Баварская"', 'weight': 500, 'descr': 'Кр. соус, колбаски, сыр, шампиньоны, томаты, специи', class: ['pizza', 'meat']},
+        'tartaletki': {'count': 0, 'price': 380, 'title': 'Тарталетки', 'weight': 180, 'descr': 'Куриное филе, ананас, сыр, чеснок, грецкий орех, соус', class: ['cold', 'meat']},
+        'canape': {'count': 0, 'price': 450, 'title': 'Канапе', 'weight': 180, 'descr': 'Красная рыба, авокадо, огурец, оливки, чёрный хлеб', class: ['cold', 'fish']},
+        'chips': {'count': 0, 'price': 320, 'title': 'Фирменные чипсы', 'weight': 180, 'descr': 'Картофельные чипсы, томатный соус, специи', class: ['cold']},
+        'beer': {'count': 0, 'price': 250, 'title': 'Фирменное пиво', 'weight': 500, 'descr': 'Хмель, ячменный солод, дрожжи', class: ['drink']},
+        'fresh': {'count': 0, 'price': 350, 'title': 'Арбузный фреш', 'weight': 300, 'descr': 'Арбуз, лайм, мята', class: ['drink']},
+        'coffe': {'count': 0, 'price': 200, 'title': 'Коффе', 'weight': 150, 'descr': 'Молотый кофе, сливки', class: ['drink']},
+        'tea': {'count': 0, 'price': 150, 'title': 'Чай', 'weight': 200, 'descr': 'Черный чай, лимон', class: ['drink']}
     };
     // витягування елементів html
     const headerCounter = document.querySelector('.header__basket-counter'),  // лічильник шапки
+          cardsScreen = document.querySelector('.menu__wrapper'),
           cardsWrapper = document.querySelector('.menu__cards');  // область карток
+          
     // встановлення лічильника шапки на 0
     headerCounter.innerHTML = 0;
 
@@ -42,8 +44,13 @@ window.addEventListener('DOMContentLoaded', () => {
     const renderMenu = () => {
         for (let key in cart) {  // перебираємо об'єкт даних
             const menuCard = document.createElement('div');  // шаблон картки
+            menuCard.classList.add('menu-item-wrapper');
+            menuCard.classList.add('all');
+            cart[key]['class'].forEach(c => {
+                menuCard.classList.add(`${c}`);
+            });
             menuCard.innerHTML = `
-                <div class="card all ${cart[key]['class']}" data-id="${key}">
+                <div class="card" data-id="${key}">
                     <div class="card__cheked">
                         <img src="./icons/checked.svg" alt="check">
                     </div>
@@ -96,6 +103,7 @@ window.addEventListener('DOMContentLoaded', () => {
           markSushi = cardsWrapper.querySelectorAll('.sushi'),        // елементи фільтру fifth
           markPizza = cardsWrapper.querySelectorAll('.pizza'),
           markDrink = cardsWrapper.querySelectorAll('.drink');
+    let cardCount = Object.keys(cart).length;
 
     const typeFilter = (markType) => {               // функція для довільної марки
         markAll.forEach(mark => {                        // перебір елементів з класом all
@@ -103,15 +111,21 @@ window.addEventListener('DOMContentLoaded', () => {
             mark.classList.remove('animated', 'fadeIn');
         });
 
-        if (markType) {                                  // якщо ми вказали mark (тобто в цьому фільтрі є елементи)
+        if (markType) {   
+            cardCount = 0;                               // якщо ми вказали mark (тобто в цьому фільтрі є елементи)
             markType.forEach(mark => {                      // перебір елементів цього фільтру
                 mark.style.display = 'block';               // показуємо елементи
+                cardCount++;
                 mark.classList.add('animated', 'fadeIn');
             });
         } else {                                          // якщо ми не вказали mark (тобто в цьому фільтрі елементів немає)
             no.style.display = 'block';                   // показуємо блок no 
             no.classList.add('animated', 'fadeIn');
         }
+        scrollMenu = 0;
+        step = scrollMenu * (cardsScreen.offsetWidth / 3);
+        cardsWrapper.style.transform = `translateX(${-step}px)`;
+        scrollMenuItem(markType);
     };
 
     btnAll.addEventListener('click', () => {      // при натисканні на фільтер all
@@ -169,7 +183,7 @@ window.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    const clearActive = (key) => {  // функція зняття активності картки меню коли її видплили у кошику
+    const clearActive = (key) => {  // функція зняття активності картки меню коли її видалили у кошику
         const cards = document.querySelectorAll('.card');  // кожна сформована картка меню
         cards.forEach(card => {  // перебираємо картки меню
             if (card.dataset.id == key) {  // якщо код товару співпадає з кодом видаленого товару у кошику
@@ -178,6 +192,54 @@ window.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    //======================== Скрол карток меню ===========================================================
+    const prev = document.querySelector('.menu-prev'),
+          next = document.querySelector('.menu-next');
+    let scrollMenu = 0,
+        step;
+
+    next.addEventListener('click', () => {
+        if (scrollMenu != cardCount - 3) {
+            scrollMenu++;
+        }
+        step = scrollMenu * (cardsScreen.offsetWidth / 3);
+        cardsWrapper.style.transform = `translateX(${-step}px)`;
+        scrollMenuItem();
+    });
+
+    prev.addEventListener('click', () => {
+        if (scrollMenu != 0) {
+            scrollMenu--;
+        }
+        step = scrollMenu * (cardsScreen.offsetWidth / 3);
+        cardsWrapper.style.transform = `translateX(${-step}px)`;
+        scrollMenuItem();
+    });
+
+    function scrollMenuItem(markType) {
+        if (cardCount < 4) {
+            prev.classList.add('hidden');
+            next.classList.add('hidden');
+        } else {
+            prev.classList.remove('hidden');
+            next.classList.remove('hidden');
+        }
+        if (scrollMenu == 0) {
+            prev.classList.add('gray');
+            prev.disabled = true;
+        } else {
+            prev.classList.remove('gray');
+            prev.disabled = false;
+        }
+        if (scrollMenu == cardCount - 3) {
+            next.classList.add('gray');
+            next.disabled = true;
+        } else {
+            next.classList.remove('gray');
+            next.disabled = false;
+        }
+    }
+    scrollMenuItem();
     //==================== ВІДКРИТТЯ МОДАЛЬНИХ ВІКОН ===================================================
     function bindModal(triggerSelector, modalSelector, closeSelector, submitSelector, closeOnModalClick = false) {
 

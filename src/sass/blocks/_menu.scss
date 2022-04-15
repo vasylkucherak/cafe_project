@@ -71,20 +71,59 @@
         background: rgba(255, 255, 255, 0.1);
         z-index: 0;
     }
-    &__cards {
+    .menu-prev {
+        left: 10px;
+    }
+    .menu-next {
+        right: 10px;
+    }
+    .menu-prev, .menu-next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 10;
         display: flex;
-        padding: 0 20px;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 80px;
+        background-color: #504b4a;
+        border-radius: 10px;
+        cursor: pointer;
+        &.hidden {
+            display: none;
+        }
+        &.gray {
+            svg {
+                fill: rgba(204, 204, 204, .3);
+            }
+        }
+        svg {
+            width: 40px;
+            height: 40px;
+        }
+    }
+    &__wrapper {
+        overflow: hidden;
+        margin: 0 60px;
         height: 450px;
         width: inherit;
-        overflow-x: auto;
+    }
+    &__cards {
+        position: relative;
+        display: flex;
+        height: 450px;
+        transition: all 1s;
         &::-webkit-scrollbar {
             height: 0;
+        }
+        .menu-item-wrapper {
+            padding: 50px calc((100% - 990px) / 6) 0 calc((100% - 990px) / 6);
         }
         .card {
             position: relative;
             display: flex;
             flex-direction: column;
-            margin: 50px 8px 0 8px;
             width: 330px;
             min-height: 385px;
             border-radius: 10px;
@@ -126,6 +165,7 @@
                 width: 100%;
                 border-top-left-radius: 10px;
                 border-top-right-radius: 10px;
+                object-fit: cover;
             }
             &__text {
                 margin: 10px 16px 0 20px;
@@ -191,7 +231,7 @@
     }
 }
 .animated {
-    animation-duration:1s;
+    animation-duration:2s;
     animation-fill-mode:both;
 }
 .fadeIn {
