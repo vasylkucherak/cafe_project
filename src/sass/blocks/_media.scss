@@ -1,4 +1,24 @@
 @media (max-width: 1200px) {
+    .menu {
+        &__wrapper {
+            width: 100%;
+            margin: 0;
+            padding: 0 15px;
+            overflow: auto;
+            &::-webkit-scrollbar {
+                height: 0;
+            }
+        }
+        &__cards {
+            .menu-item-wrapper {
+                padding-left: 15px;
+                padding-right: 15px; 
+            }
+        }
+        .menu-prev, .menu-next {
+            display: none;
+        }
+    }
     .map {
         &-card {
             &__title {
@@ -220,6 +240,9 @@
                 width: 300px;
                 height: 367px;
             }
+            .menu-item-wrapper {
+                padding: 0 5px;
+            }
         }
     }
     .map {
@@ -307,6 +330,16 @@
 
 
 @media (max-width: 575px) {
+    .menu {
+        &__wrapper {
+            padding: 0;
+        }
+        &__cards {
+            .menu-item-wrapper {
+                padding: 0 2px;
+            }
+        }
+    }
     .map {
         &__img {
             height: 250px;
